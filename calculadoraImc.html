@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora IMC</title>
+    <script> 
+
+        function calcularImc() { 
+            let peso = document.getElementById("peso").value;
+            let altura = document.getElementById("altura").value;
+
+            if (isNaN(peso) || isNaN(altura)){ 
+                alert("Apenas coloque numeros")
+            } else { 
+                var imc = peso / (altura * altura)
+            }
+
+            mostrarTela(imc)
+        }
+
+        function mostrarTela(imc) { 
+
+            var arredondar = parseFloat(imc.toFixed(1))
+
+            if(arredondar < 18.5) { 
+                let text = `Seu imc é ${arredondar} e está Abaixo do peso`
+                alert(text)
+            }
+            
+            if(arredondar >= 18.5 && arredondar <= 24.9 ) {
+                let text = `Seu imc é ${arredondar} e está Peso normal`
+                alert(text) 
+            }
+
+            if(arredondar >= 25 && arredondar <= 29.9 ) {
+                let text = `Seu imc é ${arredondar} e está Sobrepeso` 
+                alert(text) 
+            }
+
+
+            if(arredondar >= 30 && arredondar <= 34.9 ) { 
+                let text = `Seu imc é ${arredondar} e está Obesidade grau 1` 
+                alert(text) 
+            }
+
+
+            if(arredondar >= 35 && arredondar <= 39.9 ) { 
+                let text = `Seu imc é ${arredondar} e está Obesidade grau 2` 
+                alert(text) 
+            }
+
+
+            if(arredondar >=  40 ) { 
+                let text = `Seu imc é ${arredondar} e está Obesidade grau 3` 
+                alert(text)  
+            }
+        }
+
+    </script>
+</head>
+
+
+<body>
+    <div>
+        <h1>Vamos descobrir seu IMC</h1>
+
+        <form onsubmit="return calcularImc()">
+            <label for="fname">Seu peso</label>
+            <input type="text" id="peso" name="fname"><br><br>
+            <label for="lname">Sua altura</label>
+            <input type="text" id="altura" name="lname"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p id="resultado"></p>
+    </div>
+
+</body>
+
+</html>
