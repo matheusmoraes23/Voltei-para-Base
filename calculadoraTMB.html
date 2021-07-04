@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora TMB</title>
+    <script> 
+
+        function calcularTMB() { 
+            var sexo = document.getElementById("sexo").value;
+            var peso = document.getElementById("peso").value;
+            var altura = document.getElementById("alturacm").value;
+            var idade = document.getElementById("idade").value;
+
+            if (isNaN(peso) || isNaN(altura) || isNaN(idade)){ 
+                alert("Apenas coloque numeros")
+            } else if( sexo === 'Masculino' || sexo === 'masculino'){ 
+                mostrarTelaTMBHomem(peso, altura, idade )
+            } else if( sexo === 'Feminino' || sexo === 'feminino'){ 
+                mostrarTelaTMBMulher(peso, altura, idade )
+            }
+           
+        }
+
+        function mostrarTelaTMBHomem(peso, altura, idade ) {            
+            let valor1Homem= 66.5
+            let valor2Homem = 13.75
+            let valor3Homem = 5.0
+            let valor4Homem = 6.8
+            
+            var valorTMBHomem = valor1Homem + (valor2Homem * peso) + (valor3Homem * altura) - (valor4Homem * idade)
+            var valorTMBHomemArredondado = parseFloat(valorTMBHomem.toFixed(0))
+            alert(`Você precisa de ${valorTMBHomemArredondado} calorias diária`);
+        }
+
+        function mostrarTelaTMBMulher(peso, altura, idade ) {
+            let valor1Mulher = 665.1
+            let valor2Mulher = 9.56
+            let valor3Mulher = 1.8
+            let valor4Mulher = 4.7
+
+            var valorTMBMulher = valor1Mulher + (valor2Mulher * peso) + (valor3Mulher * altura) - (valor4Mulher * idade)
+            var valorTMBMulherArredondado = parseFloat(valorTMBMulher.toFixed(0))
+            alert(`Você precisa de ${valorTMBMulherArredondado} calorias diária`);
+        }
+
+
+
+    </script>
+</head>
+
+
+<body>
+    <div>
+        <h1>Vamos descobrir seu TMB</h1>
+        <h2>Digite Masculino ou Feminino no campo de Sexo</h2>
+        <form onsubmit="return calcularTMB()">
+            <label for="fsexo">Sexo</label>
+            <input type="text" id="sexo" name="fsexo"><br><br>
+            
+            <label for="fpeso">Peso</label>
+            <input type="text" id="peso" name="fpeso"><br><br>
+            
+            <label for="faltura">Altura em cm</label>
+            <input type="text" id="alturacm" name="faltura"><br><br>
+            
+            <label for="fidade">Idade</label>
+            <input type="text" id="idade" name="fidade"><br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+</body>
+
+</html>
